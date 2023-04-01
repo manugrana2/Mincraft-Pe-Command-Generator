@@ -26,6 +26,15 @@
           .row{
             display: block;
           }
+          .row .col{
+            margin-bottom:10px;
+          }
+        }
+        .replaceitem{
+          display: block;
+        }
+        .replaceitem .col{
+          margin-top: 10px;
         }
     </style>
   </head>
@@ -46,19 +55,19 @@
       <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
         <div class="card-body">
             <p>You will generate the /give command just input your parameters.</p>
-            <form>
+            <form onsubmit="event.preventDefault();">
               <div class="row give">
                 <div class="col">
-                  <input type="text" class="form-control selectorat" placeholder="Selector">
+                  <input type="text" class="form-control selectorat" placeholder="Target" required>
                 </div>
                 <div class="col">
-                  <input type="text" class="form-control name" placeholder="Name">
+                  <input type="text" class="form-control name" placeholder="Item Name" required>
                 </div>
                 <div class="col">
-                  <input type="text" class="form-control qty" placeholder="Quantity">
+                  <input type="number" class="form-control qty" placeholder="Amount" required>
                 </div>
                  <div class="col">
-                  <input type="text" class="form-control id" placeholder="ID">
+                  <input type="number" class="form-control id" placeholder="ID" required>
                 </div>
                 <br>
                 <br>
@@ -92,17 +101,17 @@
                           </select>                    
                     </label>
                 </div>
-            </form>
             
             <code>
               <div>
                 <button  onClick="copyToClipboard(event, 'givecmd')" class="btn btn btn-copy" style="z-index: 5;margin-bottom: -120px;">Copy</button>
             </div>
-              <div class="cmd" id="givecmd"></div>
+              <div class="cmd give" id="givecmd"></div>
             </code>
             <div style="float:left;margin-top:10px;margin-bottom:12px">
-                <button type="button" class="btn btn-success generate-give">Generate</button>
+                <button type="submit" class="btn btn-success generate-give">Generate</button>
             </div>
+          </form>
         </div>
       </div>
     </div>
@@ -119,59 +128,91 @@
             <p>
                 You will generate the /replaceitem command just input your parameters.
             </p>
-            <form>
-                <div class="row">
+            <form onsubmit="event.preventDefault();">
+                <div class="row replaceitem">
                   <div class="col">
-                    <input type="text" class="form-control selectorat" placeholder="Selector">
+                    <label class="form-check-label" for="flexSwitchCheckDefault"> Type:
+                      <select class="form-select" aria-label="select example" id="replaceType">
+                        <option value="entity">Entity</option>  
+                        <option value="block">Block</option>
+                        </select>                    
+                  </label>
                   </div>
                   <div class="col">
-                    <input type="text" class="form-control name" placeholder="Name">
+                    <input type="text" class="form-control replaceSelector" id="replaceSelector" placeholder="Target">
+                    <input type="text" class="form-control replaceSelector hide" id="replacePosition" placeholder="Postion: x y z">
                   </div>
                   <div class="col">
-                    <input type="text" class="form-control qty" placeholder="Quantity">
+                    <label class="form-check-label" for="flexSwitchCheckDefault" id="entitySlot">Slot:
+                      <select class="form-select" aria-label="select example" id="replaceSlot">
+                        <option value="slot.weapon.mainhand">slot.weapon.mainhand</option>
+                        <option value="slot.weapon.offhand">slot.weapon.offhand</option>
+                        <option value="slot.armor.head">slot.armor.head</option>
+                        <option value="slot.armor.chest">slot.armor.chest</option>
+                        <option value="slot.armor.legs">slot.armor.legs</option>
+                        <option value="slot.armor.feet">slot.armor.feet</option>
+                        <option value="slot.hotbar">slot.hotbar</option>
+                        <option value="slot.inventory">slot.inventory</option>
+                        <option value="slot.enderchest">slot.enderchest</option>
+                        <option value="slot.saddle">slot.saddle</option>
+                        <option value="slot.armor">slot.armor</option>
+                        <option value="slot.chest">slot.chest</option>
+                        <option value="slot.equippable">slot.equippable</option>
+                        </select>   
+                  </label>
+                  <input type="text" class="form-control replaceSelector hide" id="blockSlot" placeholder="slot.container" disabled>                 
+                  </div>
+                  <div class="col">
+                    <input type="number" class="form-control replaceSlotId" placeholder="Slot Id" required>
+                  </div>
+                  <div class="col">
+                    <input type="text" class="form-control replaceItemName" placeholder="Item Name" required>
                   </div>
                    <div class="col">
-                    <input type="text" class="form-control id" placeholder="ID">
+                    <input type="number" class="form-control replaceQty" placeholder="Amount" required>
+                  </div>
+                  <div class="col">
+                    <input type="number" class="form-control replaceData" placeholder="Data" required>
                   </div>
                   <br>
                   <br>
                   </div>
                   <p>NBT Commands:</p>
                   <div class="form-check form-switch">
-                      <input class="form-check-input" type="checkbox" id="gCanPlaceOn">
+                      <input class="form-check-input" type="checkbox" id="rCanPlaceOn">
                       <label class="form-check-label" for="flexSwitchCheckDefault">CanPlaceOn   
-                      <input class="form-control hide" id="gCanPlaceOnVal" type="text" placeholder="Blocks (Separated by ,)">
+                      <input class="form-control hide" id="rCanPlaceOnVal" type="text" placeholder="Blocks (Separated by ,)">
   
                       </label>
                   </div>
                   <div class="form-check form-switch">
-                      <input class="form-check-input" type="checkbox" id="gCanDestroy">
+                      <input class="form-check-input" type="checkbox" id="rCanDestroy">
                       <label class="form-check-label" for="flexSwitchCheckDefault">CanDestroy  
-                          <input class="form-control hide" id="gCanDestroyVal" type="text" placeholder="Blocks (Separated by ,)">
+                          <input class="form-control hide" id="rCanDestroyVal" type="text" placeholder="Blocks (Separated by ,)">
                       </label>
                   </div>
                   <div class="form-check form-switch">
-                      <input class="form-check-input" type="checkbox" id="gKeepOnDeath">
+                      <input class="form-check-input" type="checkbox" id="rKeepOnDeath">
                       <label class="form-check-label" for="flexSwitchCheckDefault">KeepOnDeath  
                       
                       </label>
                   </div>
                   <div class="form-check form-switch">
-                      <input class="form-check-input" type="checkbox" id="gitemLock">
+                      <input class="form-check-input" type="checkbox" id="ritemLock">
                       <label class="form-check-label" for="flexSwitchCheckDefault">  ItemLock
-                          <select class="form-select" aria-label="Disabled select example" id="gitemLockVal" disabled>
+                          <select class="form-select" aria-label="Disabled select example" id="ritemLockVal" disabled>
                               <option value="lock_in_slot">Slot</option>
                               <option value="lock_in_inventory">Inventory</option>
                             </select>                    
                       </label>
                   </div>
-              </form>
               
-            <code><div class="cmd" id="cmd"></div>
+            <code><div class="cmd replace" id="cmd"></div>
               </code>
               <div style="float:left;margin-top:10px;margin-bottom:12px">
-                <button type="button" class="btn btn-success generate-give">Generate</button>
+                <button type="submit" class="btn btn-success generate-replace">Generate</button>
             </div>
+          </form>
               <div style="float:left;margin-left:20px;margin-top:10px;margin-bottom:12px">
                 <button type="button" class="btn btn generate-give"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clipboard" viewBox="0 0 16 16">
                   <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z"/>
@@ -193,7 +234,7 @@
     let name = $(this).parents().find(".name").val();
     let qty = $(this).parents().find(".qty").val();
     let id = $(this).parents().find(".id").val();
-    let cmd = $(this).parents().find(".cmd");
+    let cmd = $(this).parents().find(".cmd.give");
     let cmdp1= '/give '+selector+' '+name+' '+qty+' '+id+' ';
     let cmdp2 = {};
 
@@ -259,6 +300,14 @@
 
         }
     });
+    $("#ritemLock").change(function(){
+        if($(this).is(':checked')){
+            $("#ritemLockVal").prop('disabled',false);
+        }else{
+            $("#ritemLockVal").prop('disabled',true);
+
+        }
+    });
 
     $("#gCanPlaceOn").change(function(){
         if($(this).is(':checked')){
@@ -267,14 +316,104 @@
             $("#gCanPlaceOnVal").addClass("hide");
         }
     });
+    $("#rCanPlaceOn").change(function(){
+        if($(this).is(':checked')){
+            $("#rCanPlaceOnVal").removeClass("hide");
+        }else{
+            $("#rCanPlaceOnVal").addClass("hide");
+        }
+    });
     $("#gCanDestroy").change(function(){
         if($(this).is(':checked')){
             $("#gCanDestroyVal").removeClass("hide");
         }else{
             $("#gCanDestroyVal").addClass("hide");
         }
+    });
+    $("#rCanDestroy").change(function(){
+        if($(this).is(':checked')){
+            $("#rCanDestroyVal").removeClass("hide");
+        }else{
+            $("#rCanDestroyVal").addClass("hide");
+        }
     })
    
+
+// Genera replace item
+$(".generate-replace").click(function (){
+    let selector, slot;
+    let type = $(this).parents().find("#replaceType").val();
+    if(type == "entity"){
+       selector = $(this).parents().find("#replaceSelector").val();
+      slot =  $(this).parents().find("#replaceSlot").val();
+    }else if(type == "block"){
+       selector = $(this).parents().find("#replacePosition").val();
+       slot = "slot.container";
+    }
+
+    let slotId = $(this).parents().find(".replaceSlotId").val();
+    let name = $(this).parents().find(".replaceItemName").val();
+    let qty = $(this).parents().find(".replaceQty").val();
+    let data = $(this).parents().find(".replaceData").val();
+    let cmd = $(this).parents().find(".cmd.replace");
+    let cmdp1= '/replaceitem '+type+' '+selector+' '+slot+' '+slotId+' '+name+' '+qty+' '+data+' ';
+    let cmdp2 = {};
+
+    // Check CanPlaceOn
+    if ($("#rCanPlaceOn").is(':checked')){
+        let placeBlocks = $("#rCanPlaceOnVal").val();
+        rmSpaces = placeBlocks.replace(/\s/g,'')
+        onBlock = rmSpaces.split(",");
+        onBlock = onBlock.filter(word => word.length > 0);
+        let blocks = new Array();
+        onBlock.forEach(block => {
+            blocks.push(block);
+        });
+        console.log(blocks);
+        if(blocks.length>0){
+            cmdp2['minecraft:can_place_on'] = {"blocks":blocks};
+        }
+    }
+
+    // Check can destroy
+    if ($("#rCanDestroy").is(':checked')){
+        let delBlocks = $("#rCanDestroyVal").val();
+        rmSpaces = delBlocks.replace(/\s/g,'');
+        onBlock = rmSpaces.split(",");
+        onBlock = onBlock.filter(word => word.length > 0);
+        let blocks =new Array();
+        onBlock.forEach(block => {
+            blocks.push(block);
+        });
+        console.log(blocks);
+        if(blocks.length>0){
+            cmdp2['minecraft:can_destroy'] = {"blocks":blocks};
+        }
+    }
+
+    // Check keep on death
+    if ($("#rKeepOnDeath").is(':checked')){
+        cmdp2['minecraft:keep_on_death'] = {};
+    }
+
+    // check item lock ItemLock 
+    if ($("#ritemLock").is(':checked')){
+        let value = $("#ritemLockVal").val();
+        if(value){
+        cmdp2['minecraft:item_lock'] = {"mode":value};
+        }
+    }
+
+
+    completeCmd = cmdp1;
+    if(Object.keys(cmdp2).length>0){
+        completeCmd = cmdp1+JSON.stringify(cmdp2);
+    }
+
+    $(cmd).text(completeCmd);
+    
+    });
+
     function copyToClipboard(event, elementId) {
 // Create a "hidden" input
 var aux = document.createElement("input");
@@ -305,6 +444,25 @@ document.body.removeChild(aux);
       event.target.innerHTML = buttonVal;
     });
 });
+
+document.getElementById("replaceType").addEventListener("change", function(event){
+  if(event.target.value == "entity"){
+    document.getElementById("replacePosition").classList.add("hide");    
+    document.getElementById("replaceSelector").classList.remove("hide");
+    document.getElementById("entitySlot").classList.remove("hide");
+    document.getElementById("blockSlot").classList.add("hide");
+
+    
+  }else if(event.target.value == "block"){
+    document.getElementById("replaceSelector").classList.add("hide");
+    document.getElementById("replacePosition").classList.remove("hide");
+    document.getElementById("entitySlot").classList.add("hide");
+    document.getElementById("blockSlot").classList.remove("hide");
+
+
+
+  }
+})
 </script>
   </body>
 </html>
