@@ -1,0 +1,257 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <title>Minecraft Pe Command Generator</title>
+    <style>
+        .hide{
+            display: none;
+        }
+    </style>
+  </head>
+  <body>
+    <h1>Minecraft Command Generator</h1>
+    <p>Gerate commands for minecraft pe pocket edition easily. </p>
+  <p></p>Select in the menu bellow what command you what to generate. </p>
+  <div id="accordion">
+    <div class="card">
+      <div class="card-header" id="headingOne">
+        <h5 class="mb-0">
+          <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+            /give
+          </button>
+        </h5>
+      </div>
+  
+      <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+        <div class="card-body">
+            <p>You will generate the /give command just input your parameters.</p>
+            <form>
+              <div class="row">
+                <div class="col">
+                  <input type="text" class="form-control selectorat" placeholder="Selector">
+                </div>
+                <div class="col">
+                  <input type="text" class="form-control name" placeholder="Name">
+                </div>
+                <div class="col">
+                  <input type="text" class="form-control qty" placeholder="Quantity">
+                </div>
+                 <div class="col">
+                  <input type="text" class="form-control id" placeholder="ID">
+                </div>
+                <br>
+                <br>
+                </div>
+                <p>NBT Commands:</p>
+                <div class="form-check form-switch">
+                    <input class="form-check-input" type="checkbox" id="gCanPlaceOn">
+                    <label class="form-check-label" for="flexSwitchCheckDefault">CanPlaceOn   
+                    <input class="form-control hide" id="gCanPlaceOnVal" type="text" placeholder="Blocks (Separated by ,)">
+
+                    </label>
+                </div>
+                <div class="form-check form-switch">
+                    <input class="form-check-input" type="checkbox" id="gCanDestroy">
+                    <label class="form-check-label" for="flexSwitchCheckDefault">CanDestroy  
+                        <input class="form-control hide" id="gCanDestroyVal" type="text" placeholder="Blocks (Separated by ,)">
+                    </label>
+                </div>
+                <div class="form-check form-switch">
+                    <input class="form-check-input" type="checkbox" id="gKeepOnDeath">
+                    <label class="form-check-label" for="flexSwitchCheckDefault">KeepOnDeath  
+                    
+                    </label>
+                </div>
+                <div class="form-check form-switch">
+                    <input class="form-check-input" type="checkbox" id="gitemLock">
+                    <label class="form-check-label" for="flexSwitchCheckDefault">  ItemLock
+                        <select class="form-select" aria-label="Disabled select example" id="gitemLockVal" disabled>
+                            <option value="lock_in_slot">Slot</option>
+                            <option value="lock_in_inventory">Inventory</option>
+                          </select>                    
+                    </label>
+                </div>
+            </form>
+            
+            <code><div class="cmd" style="margin-top:50px;background:#111111
+;border:2px solid black;padding:20px;margin-right:150px;color:green;font-size:18px"></div>
+            </code>
+            <div style="float:left;margin-top:10px;margin-bottom:12px">
+                <button type="button" class="btn btn-success generate-give">Generate</button>
+            </div>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-header" id="headingTwo">
+        <h5 class="mb-0">
+          <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+           /replace item
+          </button>
+        </h5>
+      </div>
+      <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+        <div class="card-body">
+            <p>
+                You will generate the /replaceitem command just input your parameters.
+            </p>
+            <form>
+                <div class="row">
+                  <div class="col">
+                    <input type="text" class="form-control selectorat" placeholder="Selector">
+                  </div>
+                  <div class="col">
+                    <input type="text" class="form-control name" placeholder="Name">
+                  </div>
+                  <div class="col">
+                    <input type="text" class="form-control qty" placeholder="Quantity">
+                  </div>
+                   <div class="col">
+                    <input type="text" class="form-control id" placeholder="ID">
+                  </div>
+                  <br>
+                  <br>
+                  </div>
+                  <p>NBT Commands:</p>
+                  <div class="form-check form-switch">
+                      <input class="form-check-input" type="checkbox" id="gCanPlaceOn">
+                      <label class="form-check-label" for="flexSwitchCheckDefault">CanPlaceOn   
+                      <input class="form-control hide" id="gCanPlaceOnVal" type="text" placeholder="Blocks (Separated by ,)">
+  
+                      </label>
+                  </div>
+                  <div class="form-check form-switch">
+                      <input class="form-check-input" type="checkbox" id="gCanDestroy">
+                      <label class="form-check-label" for="flexSwitchCheckDefault">CanDestroy  
+                          <input class="form-control hide" id="gCanDestroyVal" type="text" placeholder="Blocks (Separated by ,)">
+                      </label>
+                  </div>
+                  <div class="form-check form-switch">
+                      <input class="form-check-input" type="checkbox" id="gKeepOnDeath">
+                      <label class="form-check-label" for="flexSwitchCheckDefault">KeepOnDeath  
+                      
+                      </label>
+                  </div>
+                  <div class="form-check form-switch">
+                      <input class="form-check-input" type="checkbox" id="gitemLock">
+                      <label class="form-check-label" for="flexSwitchCheckDefault">  ItemLock
+                          <select class="form-select" aria-label="Disabled select example" id="gitemLockVal" disabled>
+                              <option value="lock_in_slot">Slot</option>
+                              <option value="lock_in_inventory">Inventory</option>
+                            </select>                    
+                      </label>
+                  </div>
+              </form>
+              
+              <code><div class="cmd" style="margin-top:50px;background:#111111
+  ;border:2px solid black;padding:20px;margin-right:150px;color:green;font-size:18px"></div>
+              </code>
+              <div style="float:left;margin-top:10px;margin-bottom:12px">
+                  <button type="button" class="btn btn-success generate-give">Generate</button>
+              </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script>
+    $(".generate-give").click(function (){
+    let selector = $(this).parents().find(".selectorat").val();
+    let name = $(this).parents().find(".name").val();
+    let qty = $(this).parents().find(".qty").val();
+    let id = $(this).parents().find(".id").val();
+    let cmd = $(this).parents().find(".cmd");
+    let cmdp1= '/give '+selector+' '+name+' '+qty+' '+id+' ';
+    let cmdp2 = {};
+
+    // Check CanPlaceOn
+    if ($("#gCanPlaceOn").is(':checked')){
+        let placeBlocks = $("#gCanPlaceOnVal").val();
+        rmSpaces = placeBlocks.replace(/\s/g,'')
+        onBlock = rmSpaces.split(",");
+        onBlock = onBlock.filter(word => word.length > 0);
+        let blocks = new Array();
+        onBlock.forEach(block => {
+            blocks.push(block);
+        });
+        console.log(blocks);
+        if(blocks.length>0){
+            cmdp2['minecraft:can_place_on'] = {"blocks":blocks};
+        }
+    }
+
+    // Check can destroy
+    if ($("#gCanDestroy").is(':checked')){
+        let delBlocks = $("#gCanDestroyVal").val();
+        rmSpaces = delBlocks.replace(/\s/g,'');
+        onBlock = rmSpaces.split(",");
+        onBlock = onBlock.filter(word => word.length > 0);
+        let blocks =new Array();
+        onBlock.forEach(block => {
+            blocks.push(block);
+        });
+        console.log(blocks);
+        if(blocks.length>0){
+            cmdp2['minecraft:can_destroy'] = {"blocks":blocks};
+        }
+    }
+
+    // Check keep on death
+    if ($("#gKeepOnDeath").is(':checked')){
+        cmdp2['minecraft:keep_on_death'] = {};
+    }
+
+    // check item lock ItemLock 
+    if ($("#gitemLock").is(':checked')){
+        let value = $("#gitemLockVal").val();
+        if(value){
+        cmdp2['minecraft:item_lock'] = {"mode":value};
+        }
+    }
+
+
+    completeCmd = cmdp1;
+    if(Object.keys(cmdp2).length>0){
+        completeCmd = cmdp1+JSON.stringify(cmdp2);
+    }
+
+    $(cmd).text(completeCmd);
+    
+    });
+    $("#gitemLock").change(function(){
+        if($(this).is(':checked')){
+            $("#gitemLockVal").prop('disabled',false);
+        }else{
+            $("#gitemLockVal").prop('disabled',true);
+
+        }
+    });
+
+    $("#gCanPlaceOn").change(function(){
+        if($(this).is(':checked')){
+            $("#gCanPlaceOnVal").removeClass("hide");
+        }else{
+            $("#gCanPlaceOnVal").addClass("hide");
+        }
+    });
+    $("#gCanDestroy").change(function(){
+        if($(this).is(':checked')){
+            $("#gCanDestroyVal").removeClass("hide");
+        }else{
+            $("#gCanDestroyVal").addClass("hide");
+        }
+    })
+</script>
+  </body>
+</html>
